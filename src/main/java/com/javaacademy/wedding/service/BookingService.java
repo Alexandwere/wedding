@@ -1,6 +1,7 @@
 package com.javaacademy.wedding.service;
 
 import com.javaacademy.wedding.dto.BookingDto;
+import com.javaacademy.wedding.dto.CountFreeDays;
 import com.javaacademy.wedding.entity.Booking;
 import com.javaacademy.wedding.mapper.BookingMapper;
 import com.javaacademy.wedding.repository.BookingRepository;
@@ -27,4 +28,9 @@ public class BookingService {
                 .toList();
     }
 
+    public CountFreeDays getCountFreeDates(int month) {
+        CountFreeDays countFreeDays = new CountFreeDays();
+        countFreeDays.setCount(bookingRepository.getOfMonth(month).size());
+        return countFreeDays;
+    }
 }
