@@ -16,6 +16,6 @@ public class BookingStorage {
     }
 
     public List<Booking> getOfMonth(int month) {
-        return data.stream().filter(booking -> booking.getMonthNumber() == month).toList();
+        return data.stream().filter(booking -> booking.getMonthDay().getMonthValue() == month).toList();
     }
 }

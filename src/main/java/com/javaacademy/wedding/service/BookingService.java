@@ -1,7 +1,8 @@
 package com.javaacademy.wedding.service;
 
 import com.javaacademy.wedding.dto.BookingDto;
-import com.javaacademy.wedding.dto.CountFreeDays;
+import com.javaacademy.wedding.dto.BookingOutDto;
+import com.javaacademy.wedding.dto.CountFreeDaysDto;
 import com.javaacademy.wedding.entity.Booking;
 import com.javaacademy.wedding.mapper.BookingMapper;
 import com.javaacademy.wedding.repository.BookingRepository;
@@ -13,8 +14,8 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 public class BookingService {
-    BookingRepository bookingRepository;
-    BookingMapper bookingMapper;
+    private final BookingRepository bookingRepository;
+    private final BookingMapper bookingMapper;
 
     public void save(BookingDto bookingDto) {
         Booking booking = bookingMapper.convertToBooking(bookingDto);
@@ -22,14 +23,14 @@ public class BookingService {
         bookingRepository.save(booking);
     }
 
-    public List<BookingDto> getOfMonth(int month) {
+    public List<BookingOutDto> getOfMonth(int month) {
         return bookingRepository.getOfMonth(month).stream()
-                .map(bookingMapper::convertToBookingDto)
+                .map(bookingMapper::convertToBookingOutDto)
                 .toList();
     }
 
-    public CountFreeDays getCountFreeDates(int month) {
-        CountFreeDays countFreeDays = new CountFreeDays();
+    public CountFreeDaysDto getCountFreeDates(int month) {
+        CountFreeDaysDto countFreeDays = new CountFreeDaysDto();
         countFreeDays.setCount(bookingRepository.getOfMonth(month).size());
         return countFreeDays;
     }

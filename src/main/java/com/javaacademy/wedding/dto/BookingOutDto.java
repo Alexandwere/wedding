@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CountFreeDays {
-    int count;
+public class BookingOutDto {
+    private int month;
+    private int day;
+    private boolean booked;
 }
