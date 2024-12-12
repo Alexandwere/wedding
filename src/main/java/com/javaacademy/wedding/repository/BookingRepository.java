@@ -5,7 +5,7 @@ import com.javaacademy.wedding.storage.BookingStorage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
+import java.util.Set;
 
 @Component
 @RequiredArgsConstructor
@@ -15,7 +15,8 @@ public class BookingRepository {
     public void save(Booking booking) {
         bookingStorage.save(booking);
     }
-    public List<Booking> getOfMonth(int month) {
+
+    public Set<Booking> getOfMonth(int month) {
         return bookingStorage.getOfMonth(month);
     }
 }

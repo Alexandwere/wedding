@@ -39,5 +39,4 @@ public class BookingController {
     public CountFreeDaysDto getFreeDatesOfMonth(@PathVariable int month) {
         return bookingService.getCountFreeDates(month);
     }
-
 }
